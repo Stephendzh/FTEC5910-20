@@ -58,7 +58,50 @@ When n=2, we get 1-out-of-2 OT which has the following property: 1-out-of-2 OT i
 
 [ElGamal加密算法](https://zh.m.wikipedia.org/zh-hans/ElGamal%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95)
 
+### Secret Sharing
 
+Secret sharing is a concept of hiding a secret value by splitting it into random parts and distributing these parts (a.k.a. shares) to different parties, so that each party has only one share and thus only one piece of the secret.
+
+There are several types of secret sharing, mainly including arithmetic secret sharing, Shamir's secret sharing and binary secret sharing.
+
+Here we focus on arithmetic secret sharing.
+
+Consider that a party $P_i$ wants to share a secret $S$ among $n$ parties $\{P_i\}_{i=1}^n$ in a finite field $F_q$ . 
+
+To share S, the party $P_i$ randomly samples $n-1$ values $\{s_i\}^n_{i=1}$ from $\mathbb Z_q$ and set $s_n = S - \sum_{i=1}^{n-1} s_i$  mod  $q$ 
+
+Then, $P_i$ distributes $s_k$ to party $P_k$ for $ k \neq i$ 
+
+We denote the shared $S$ as $<S> = \{s_i\}_{i=1}^n$
+
+#### Shamir 秘密共享协议
+
+>最早在1970年基于Lagrange插值和矢量方法提出的。基本思想是将秘密$s$分解成$n$个秘密，分发给持有者，其中任意不少于$t$个秘密均能恢复密文，而任意少于$t$个秘密均无法得到密文的任何信息
+>
+>1. 加密过程
+>
+>  - 假设有秘密$S$要保护，任意取$t-1$个随机数，构造如下多项式
+$$
+>   f(x) = a_0 + a_1x + a_2x^2+...+a_{t-1}x^{t-1}
+> $$
+>
+>   ​       其中$a_0$是秘密$S$ 所有运算均在有限域中进行
+>
+>   - 取任意$n$个数，$x_1,x_2,...,x_n$分别带入多项式，得到$f(x_1),...,f(x_n)$
+>
+>   - 将$(x_1,f(x_1)),(x_2,f(x_2)),...,(x_n,f(x_n))$分发到$n$个服务器上
+>
+>2. 解密过程
+>
+>   ![img](https://pic3.zhimg.com/80/v2-b88ddcd7e7e35c00271a661b456d2b6e_720w.webp)
+>
+>   ![img](https://pic3.zhimg.com/80/v2-841b71b9fee5af96a3272888e792f1c2_720w.webp)
+>
+>   ![img](https://pic1.zhimg.com/80/v2-cb0eee0588b141fc0904f41257325678_720w.webp)
+
+
+
+# Distributed Machine Learning
 
 
 
