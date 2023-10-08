@@ -72,7 +72,7 @@ To share S, the party $P_i$ randomly samples $n-1$ values $\{s_i\}^n_{i=1}$ from
 
 Then, $P_i$ distributes $s_k$ to party $P_k$ for $ k \neq i$ 
 
-We denote the shared $S$ as $<S> = \{s_i\}_{i=1}^n$
+We denote the shared $S$ as $S = \{s_i\}_{i=1}^n$
 
 #### Shamir 秘密共享协议
 
