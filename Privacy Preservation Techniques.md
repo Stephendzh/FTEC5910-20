@@ -8,8 +8,9 @@ Secure Multi-Party Computation a.k.a secure function evaluation, was initially i
 
 MPC allows us to compute functions of private input value so that each party learns only the corresponding function output value, but not input values from other parties. For example, given a secret value $x$ that is split into $n$ shares so that a party $P_i$ only knows $x_i$ all party can collaborative compute
 
-$$ y_1,...,y_n = f(x_1,...x_n)$$
-
+$$
+y_1,...,y_n = f(x_1,...x_n)
+$$
 so the party $P_i$ learns nothing beyond the output value $y_i$ corresponding to its own input $x_i$
 
 The standard approach to prove that MPC protocol is secure is the ***simulation paradigm.*** To prove an MPC protocol is secure against adversaries that corrupt $t$ parties under the simulation paradigm, we build a simulator that, when given inputs and outputs of $t$ colluding parties, generates $t$ transcripts, so that the generated transcripts are ***distinguishable*** to that generated in the actual protocol
@@ -44,7 +45,7 @@ When n=2, we get 1-out-of-2 OT which has the following property: 1-out-of-2 OT i
 >
 > 接收者向发送者发送了两个公钥。接收者只持有与这两个公钥中的一个对应的公钥，而发送者不知道是哪一个公钥。然后，发送者使用它们对应的公钥对两条消息进行加密，并将密文发送给接收者。最后，接收者使用私钥解密目标密文。
 >
-> 在离散对数设置中$(\mathbb G, g, p)$，其中$\mathbb G$是一个素数阶$p$的群，$g \in \mathbb G$是一个生成元，$H : G \rightarrow {0, 1}^n$是一个哈希函数。假设发送者A有$x_0, x_1 \in {0, 1}^n$，而接收者B有$b \in {0,1}$。
+> 在离散对数设置中$(\mathbb G, g, p)$，其中$\mathbb G$是一个素数阶$p$的群，$g \in \mathbb G$是一个生成元，$H : G \rightarrow \{0, 1\}^n$是一个哈希函数。假设发送者A有$x_0, x_1 \in \{0, 1\}^n$，而接收者B有$b \in \{0,1\}$
 >
 > 1. $\mathcal A$ chooses a random element $c \leftarrow G$ and sends it to $\mathcal B$
 >
@@ -72,7 +73,7 @@ To share S, the party $P_i$ randomly samples $n-1$ values $\{s_i\}^n_{i=1}$ from
 
 Then, $P_i$ distributes $s_k$ to party $P_k$ for $ k \neq i$ 
 
-We denote the shared $S$ as $S = \{s_i\}_{i=1}^n$
+We denote the shared $S$ as $<S> = \{s_i\}_{i=1}^n$
 
 #### Shamir 秘密共享协议
 
@@ -80,8 +81,9 @@ We denote the shared $S$ as $S = \{s_i\}_{i=1}^n$
 >
 >1. 加密过程
 >
->  - 假设有秘密$S$要保护，任意取$t-1$个随机数，构造如下多项式
-$$
+>   - 假设有秘密$S$要保护，任意取$t-1$个随机数，构造如下多项式
+>
+> $$
 >   f(x) = a_0 + a_1x + a_2x^2+...+a_{t-1}x^{t-1}
 > $$
 >
@@ -99,7 +101,28 @@ $$
 >
 >   ![img](https://pic1.zhimg.com/80/v2-cb0eee0588b141fc0904f41257325678_720w.webp)
 
+### Homomorphic Encryption
 
+HE is generally considered as an alternative approach to MPC in PPML. HE can also be used to achieve MPC as discussed in previous section.(同态加密)
+
+#### Definition
+
+An HE scheme $\mathcal H$ is an encryption scheme that allows certain algebraic operations to be carried out on the encrypted content, by applying an efficient operation to the corresponding ciphertext (without knowing the decryption key). An HE scheme $\mathcal H$ consists of a set of 4 functions:
+$$
+\mathcal H = \{KeyGen, Enc, Dec, Eval\}
+$$
+where
+
+- $KeyGen$ : Key generation. A cryptograohic generator $g$ is taken as the input. For asymmetric HE, a apir of keys $\{pk, sk\} = KeyGen(g)$ are generated where $pk$ is the public key for encryption of the plaintext and $sk$ is the secret key for decryption of the ciphertext. For symmetric HE, only a secret key $sk = KeyGen(g)$ is generated.
+- $Enc$ : Encryption. For asymmetric HE, an encryption scheme takes the public key $pk$ and the plaintext $m$ as input, and generates the ciphertext $c = Enc_{pk}(m)$ as the output. For symmetric HE, an HE scheme takes the secret key $sk$ and the plaintext $m$, and generates ciphertext $ c = Enc_{sk}(m)$ 
+
+>Palliar 算法
+>
+>1999年发明的概率公钥加密算法，该算法基于复合剩余类的困难问题， 是一种满足假发的同态加密算法
+>
+>（1）密钥产生
+>
+>选取两个随机的大素数 $p,q$ 计算$n = p*q $ 和$\lambda = lcm(p-1, q-1)$, 其中， $ lcm(，)$是两个参数的最小公倍数
 
 # Distributed Machine Learning
 
