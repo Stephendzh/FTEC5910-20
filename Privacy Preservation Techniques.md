@@ -128,3 +128,34 @@ where
 
 
 
+Referred as DML.
+
+DML  can generally be categorized into 2 classes, namely the scalability-motived DML and privacy-motived DML. The scalability-motived DML refers to the DML paradigm that is designed to  address the ever-increasing scalability and computation requirements of large-scale ML systems.
+
+For example. in the past decades, the scales of the problems  that ML and DL methods have to deal with have increased exponentially. Training a sophisticated  DL model with a huge amount of data can easily exceed the capability of the traditional MLparadigm that relies on a single computing entity. One outstanding example is the famous BERTmodel [Devlin et al., 2019], which requires multiple tensor processing units (TPUs) for pre-training and it may take several days even with a fleet of TPUs. To cope with such scenarios, the fast-developing DML methods are considered as the answer to the ever-increasing size and complexity of ML models.
+
+##  Scalability-Motivated DML
+
+### Large-scale machine learning
+
+With the emergence of widespread communication and sensing devices, such as smartphones, portable gadgets, IoT sensors, and wireless cameras, data are ubiquitously available in enormous volumes. In this big data era, the bottleneck of ML methods has shifted from being able to infer from small training samples to dealing with large-scale high-dimensional datasets. With this trend shift, the ML community is faced with the challenge that the computation power and time do not scale well with the dataset size, making it impossible to learn from large-scale training samples with reasonable computation effort and time. We summarize in the following the major challenges that conventional ML methods are faced with when dealing with large-scale datasets.
+
+Memory shortage
+
+Unreasonable training time.
+
+### SCALABILITY-ORIENTEDDMLSCHEMES 
+
+Excessive research efforts have been cast on presenting effective frameworks and methods for dealing with large-scale datasets and ML models. Particularly, training large-scale DL mod els is very time-consuming, with the training period ranging from days to even weeks. More recently, numerous research works have been carried out to push the frontiers of DML, aim ing to reduce training time and cope with large-scale DL models. We review here some of the popular scalability-oriented DML schemes, covering ==data parallelism, model parallelism, graph parallelism, task parallelism, hybrid parallelism, and mixed parallelism==
+
+## Privacy-Motived DML
+
+ In the following, we give a quick review of representative works on privacy-preserving DML, emphasizing on how they utilize privacy protection tools mentioned above to protect the data and model security in a distributed environment. According to the aforementioned tools, we f irst summarize the DML algorithms using obfuscation and then introduce those algorithms that use cryptographic methods. 
+
+### PRIVACY-PRESERVINGDMLSCHEMES
+
+Chaudhuri and Monteleoni [2009] proposed a privacy-preserving logistic regression al gorithm based on DP. They tackle the optimization over randomized data, making it possible to take a balance between model performance and privacy protection and make the privacy bound tighter. Following the definition given by Dwork [2008], they prove that their work guarantees "-differential privacy, and provide a novel algorithm with better performance. In the proposed work, a randomized vector is generated using a Gamma function, which participates in the  optimization of the logistic regression parameter . Moreover, they concluded that their work reveals the relation between perturbation-based privacy protection and regularization.
+
+Wild and Mangasarian [2007] and Mangasarian et al. [2008] studied privacy-preserving support vector machines (PPSVMs) on horizontally and vertically partitioned datasets, respectively. They concealed the originally learned kernel with a randomly generated kernel, achieving comparable performance to the non-private SVMs. The privacy proof is based on the fact that there are infinite possible input data that can be recovered from the perturbed kernel. Therefore, sharing the perturbed kernel will not cause privacy leakage. However, these methods require participants to share the randomly generated kernel, limiting the application of these methods.
+
+ In Aonoetal. [2016], authors utilize HE to protect the data during the training of logistic regression. Their method uses a two-degree approximation to the log-linear objective function, making the training process compatible with the additive HE method, which improves compu tational efficiency while maintaining a comparable performance. Besides, they claim that their output is compatible with DP. They also analyze the storage and computation complexity of their system, showing that their system supports large-scale distributed computation. Fienberg  et al. [2006] also considered linear regression (LR) on the horizontally partitioned dataset, uti lizing MPC method to aggregate the calculation. However, in their setting, the features are categorical, which means the computation space is small. Slavkovic et al. [2007] made signifi cant progress, using secure summation protocol and secure matrix multiplication for the aggregation of distributed learning of LR, which supports both vertical and horizontal data partition.
